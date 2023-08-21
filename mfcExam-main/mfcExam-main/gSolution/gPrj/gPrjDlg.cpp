@@ -329,9 +329,9 @@ void CgPrjDlg::OnBnClickedBtnThread()
 	_thread2.join();
 	_thread3.join();
 
-	int nSum;
-	for (int k = 0; k < 4; k++)
-		nSum += nRet[k];
+	int nSum=0;
+	for (int i = 0; i < 4; i++)
+		nSum += nRet[i];
 
 	auto end = system_clock::now();
 	auto millisec = duration_cast<milliseconds>(end - start);
@@ -345,8 +345,8 @@ int CgPrjDlg::processImg(CRect rect)
 	auto start = system_clock::now();
 
 	CProcess process;
-	int nTh = 0;
-	int nRet = process.getStarInfo(&m_pDlgImage->m_image, nTh, rect);
+
+	int nRet = process.getStarInfo(&m_pDlgImage->m_image, 0, rect);
 
 	auto end = system_clock::now();
 	auto millisec = duration_cast<milliseconds>(end - start);
